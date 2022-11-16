@@ -13,6 +13,7 @@ const userSchema = new Schema({
     match: email,
   },
   password: {},
+  post: { postSchema },
 });
 
 const User = model("User", userSchema);
