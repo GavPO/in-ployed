@@ -51,9 +51,26 @@ async function updatePost(req, res) {
     };
 };
 
+async function deletePost(req, res) {
+    try {
+        await Post.findOneAndDelete({ _id: req.params.postId });
+        const associatedUser = await User.findOneAndRemove(
+            { posts: req.params.postId },
+            { $pull: { posts: req.params.postId }},
+            { new: true },
+        ).select('-__v')
+        .populate('posts');
+        res.status(200).json(associatedUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    };
+};
+
 module.exports = {
     getAllPosts,
     getPostById,
     createPost,
-    updatePost
+    updatePost,
+    deletePost
 }
