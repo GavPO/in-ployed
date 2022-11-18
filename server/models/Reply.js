@@ -12,7 +12,12 @@ const replySchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  username: [userSchema],
+  userid: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
 });
 
 const Reply = model("reply", replySchema);
