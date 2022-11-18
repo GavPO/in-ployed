@@ -12,7 +12,10 @@ const userSchema = new Schema({
     unique: true,
     match: email,
   },
-  password: {},
+  password: {
+    type: Password,
+    require: true,
+  },
   post: { postSchema },
 });
 
