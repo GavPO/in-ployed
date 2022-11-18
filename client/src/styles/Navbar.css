@@ -1,5 +1,19 @@
+body {
+    font-family: Verdana, sans-serif;
+  }
+
+.navbar{
+    background-color: #121213;
+}
+
+.navbar-brand{
+    padding-left: 20px;
+    color: #6EEB83;
+    display: inline-flex;
+}
 li{
     display: inline-flex;
+    color: #fff;
 }
 
 @media (max-width: 991px) {
@@ -8,6 +22,6 @@ li{
     }
 
     ul{
-        padding-left: 0;
+        padding-left: 20px;
     }
 }
