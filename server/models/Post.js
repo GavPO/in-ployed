@@ -1,20 +1,30 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
+const userSchema = require("./User");
+const replySchema = require("./Reply");
 
 const postSchema = new Schema({
-  job_title: {
-    type: String,
-    required: true,
+  postId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
   },
-  business_name: {
+  content: {
     type: String,
     required: true,
+    minlength: 1,
+    maxlength: 550,
+    trim: true,
   },
-  description: {
-    type: String,
-    required: true,
+  replies: [replySchema],
+  username: [userSchema],
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
+postSchema.virtual("upvoteCount").get(function () {
+  return this.upvotes.length;
+});
 
-const Post = model("Post", postSchema);
+const Post = model("post", postSchema);
 
 module.exports = Post;
