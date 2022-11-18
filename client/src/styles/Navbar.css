@@ -1,0 +1,13 @@
+li{
+    display: inline-flex;
+}
+
+@media (max-width: 991px) {
+    li{
+        display:block;
+    }
+
+    ul{
+        padding-left: 0;
+    }
+}
