@@ -14,8 +14,18 @@ const postSchema = new Schema({
     maxlength: 550,
     trim: true,
   },
-  replies: [replySchema],
-  username: [userSchema],
+  replies: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Reply",
+    },
+  ],
+  userid: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
