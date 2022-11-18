@@ -20,6 +20,7 @@ const postSchema = new Schema({
       ref: "Reply",
     },
   ],
+
   userid: [
     {
       type: Schema.Types.ObjectId,
@@ -31,6 +32,7 @@ const postSchema = new Schema({
     default: Date.now,
   },
 });
+
 postSchema.virtual("upvoteCount").get(function () {
   return this.upvotes.length;
 });
