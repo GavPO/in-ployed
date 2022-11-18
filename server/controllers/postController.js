@@ -55,5 +55,5 @@ module.exports = {
     getAllPosts,
     getPostById,
     createPost,
-    updateThought
+    updatePost
 }
