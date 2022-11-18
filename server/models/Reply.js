@@ -1,5 +1,4 @@
-const { Schema, model, Types } = require("mongoose");
-const userSchema = require("./User");
+const { Schema, Types } = require("mongoose");
 
 const replySchema = new Schema({
   content: {
@@ -12,12 +11,10 @@ const replySchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  userid: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
+  userid: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = replySchema;
