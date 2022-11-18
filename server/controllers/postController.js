@@ -37,8 +37,23 @@ async function createPost(req, res) {
     };
 };
 
+async function updatePost(req, res) {
+    try {
+        const updatedPost = await Post.findOneAndUpdate(
+            { _id: req.params.postId },
+            { $set: req.body },
+            { new: true },
+        ).select('-__v');
+        res.status(200).json(updatedPost)
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    };
+};
+
 module.exports = {
     getAllPosts,
     getPostById,
-    createPost
+    createPost,
+    updateThought
 }
