@@ -22,14 +22,36 @@ async function getUserById(req, res) {
 };
 
 async function createUser(req, res) {
-    const userCheck = User.findOne({username: req.body.username});
-    if (userCheck) {
-        res.status(400).json({ message: 'That username is already taken! Please try again.' });
-      return;
-    }
-}
+    try {
+        const userCheck = User.findOne({username: req.body.username});
+        if (userCheck) {
+            res.status(400).json({ message: 'That username is already taken! Please try again.' });
+          return;
+        }
+        const newUser = await User.create(req.body);
+        res.status(200).json(newUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    };
+};
+
+async function updateUser(req, res) {
+    try {
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body },
+        { new: true },
+      ).select('-__v');
+      res.status(200).json(updatedUser);
+    } catch (err) {
+      console.error(err)
+      res.status(500).json(err);
+    };
+  };
 
 module.exports = {
     getAllUsers,
-    getUserById
+    getUserById,
+    createUser
 };
