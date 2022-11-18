@@ -2,10 +2,6 @@ const { Schema, model, Types } = require("mongoose");
 const userSchema = require("./User");
 
 const replySchema = new Schema({
-  replyId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
-  },
   content: {
     type: String,
     required: true,
