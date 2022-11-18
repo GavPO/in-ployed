@@ -1,5 +1,4 @@
 const User = require('../models/User');
-const Post = require('../models/Post');
 
 async function getAllUsers(req, res) {
     try {
@@ -21,6 +20,14 @@ async function getUserById(req, res) {
         res.status(500).json(err);
     };
 };
+
+async function createUser(req, res) {
+    const userCheck = User.findOne({username: req.body.username});
+    if (userCheck) {
+        res.status(400).json({ message: 'That username is already taken! Please try again.' });
+      return;
+    }
+}
 
 module.exports = {
     getAllUsers,
