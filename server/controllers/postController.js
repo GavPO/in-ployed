@@ -20,3 +20,25 @@ async function getPostById(req, res) {
         res.status(500).json(err)
     };
 };
+
+async function createPost(req, res) {
+    try {
+        const newPost = await Post.create(req.body.userId)
+        const associatedUser = await User.findOneAndUpdate(
+            { _id: req.body.userId },
+            { $addToSet: { posts: newPost._id }},
+            { new: true },
+        ).select('-__v')
+        .populate('posts');
+        res.status(200).json(associatedUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    };
+};
+
+module.exports = {
+    getAllPosts,
+    getPostById,
+    createPost
+}
