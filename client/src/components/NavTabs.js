@@ -1,11 +1,15 @@
 import React from 'react';
 import '../styles/Navbar.css';
 import { Nav, Navbar} from 'react-bootstrap';
+import logo from '../assets/logo.png';
 
 function NavTabs({ currentPage, handlePageChange }) {
   return (
     <Navbar className="navbar navbar-expand-lg navbar-dark" collapseOnSelect  expand="lg">
-      <a className="navbar-brand"><h1 className="display-4">In-coded</h1></a>
+      <a className="navbar-brand" href="#">
+        <img src={logo} width="32" height="32" className="d-inline-block align-top" alt=""/>
+        In-coded
+      </a>
     <Navbar.Toggle />
     <Navbar.Collapse>
       <Nav className="ms-auto d-block">
@@ -35,13 +39,6 @@ function NavTabs({ currentPage, handlePageChange }) {
           <Nav.Item>
            <Nav.Link className="nav-link active" href="#resume" onClick={() => handlePageChange('Dashboard')}>
            Dashboard
-          </Nav.Link>
-        </Nav.Item>
-          </li>
-          <li>
-          <Nav.Item>
-           <Nav.Link className="nav-link active" href="#contact" onClick={() => handlePageChange('Contact')}>
-           Contact
           </Nav.Link>
         </Nav.Item>
           </li>
