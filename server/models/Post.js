@@ -14,12 +14,7 @@ const postSchema = new Schema({
     maxlength: 550,
     trim: true,
   },
-  replies: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Reply",
-    },
-  ],
+  replies: [replySchema],
 
   userid: [
     {
