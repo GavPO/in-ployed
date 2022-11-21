@@ -1,0 +1,26 @@
+body{
+    overflow-x: hidden;
+    font-family: Verdana, sans-serif;
+    background-color: #27272C;
+    color: white;
+}
+
+#login input{
+    all: unset;
+    background-color: #27272C;
+    border-bottom: solid 2px #6EEB83;
+}
+
+#login button, label{
+    margin-top: 20px;
+}
+
+.registration{
+    padding: 100px;
+}
+
+@media (max-width: 426px) {
+    .registration{
+        padding: 50px;
+    }
+}
