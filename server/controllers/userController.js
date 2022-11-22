@@ -24,7 +24,10 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
   try {
-    const userCheck = User.findOne({ username: req.body.username });
+    const userCheck = User.findOne({
+      where: { username: req.body.username }
+    });
+    console.log(userCheck)
     if (userCheck) {
       res
         .status(400)

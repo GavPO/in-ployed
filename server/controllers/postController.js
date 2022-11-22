@@ -23,9 +23,9 @@ async function getPostById(req, res) {
 
 async function createPost(req, res) {
     try {
-        const newPost = await Post.create(req.body.userId)
+        const newPost = await Post.create(req.body)
         const associatedUser = await User.findOneAndUpdate(
-            { _id: req.body.userId },
+            { where: { _id: req.body.userId } },
             { $addToSet: { posts: newPost._id }},
             { new: true },
         ).select('-__v')

@@ -15,7 +15,7 @@ export default function Homepage({ currentPage, handlePageChange }) {
       <div id="jumbotronText">
   <h1>Looking to share some code?</h1>
   <p className="align-middle">Share your favorite reusable code snippets and<br/> connect with other developers.</p>
-  <button type="button" class="btn btn-link">Get Started</button>
+  <button type="button" className="btn btn-link">Get Started</button>
       </div>
       </div>
       <div className="col-lg-6">

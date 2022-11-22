@@ -32,6 +32,6 @@ postSchema.virtual("upvoteCount").get(function () {
   return this.upvotes.length;
 });
 
-const Post = model("post", postSchema);
+const Post = model("Post", postSchema);
 
 module.exports = Post;
