@@ -50,6 +50,7 @@ body{
     #jumbotronText{
         margin: 20px;
         color: #6EEB83;
+        text-align: center;
     }
     #jumbotron1{
         display: none;

@@ -1,27 +1,49 @@
-body {
+body{
+    overflow-x: hidden;
     font-family: Verdana, sans-serif;
-  }
-
-.navbar{
-    background-color: #121213;
+    background-color: #27272C;
 }
 
-.navbar-brand{
-    padding-left: 20px;
+#profile img{
+    height: 40vh;
+    width: 40vh;
+    border-radius: 20px;
+    margin: 40px;
+}
+
+#profile h1{
     color: #6EEB83;
-    display: inline-flex;
+    margin: 50px;
 }
-li{
-    display: inline-flex;
+
+#profile p{
     color: #fff;
+    margin: 50px;
 }
 
-@media (max-width: 991px) {
-    li{
-        display:block;
-    }
+#contact{
+    margin: 40px;
+}
 
-    ul{
-        padding-left: 20px;
+#profile a{
+    color: #fff;
+    margin: 10px
+}
+
+@media (max-width: 992px) {
+    #profile img{
+        height: 20vh;
+        width: 20vh;
+        margin: 20px;
+    }
+    #profile h1{
+        margin: 20px;
+    }
+    #profile p{
+        margin: 20px;
+    }
+    #profile a{
+        margin: 20px;
     }
 }
+
