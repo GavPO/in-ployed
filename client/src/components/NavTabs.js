@@ -16,29 +16,36 @@ function NavTabs({ currentPage, handlePageChange }) {
         <ul>
           <li>
           <Nav.Item>
-          <Nav.Link className="nav-link active" href="#about"onClick={() => handlePageChange('Login')}>
+          <Nav.Link className="nav-link active"onClick={() => handlePageChange('Login')}>
            Login
           </Nav.Link>
         </Nav.Item>
         </li>
         <li>
           <Nav.Item>
-          <Nav.Link className="nav-link active" href="#about"onClick={() => handlePageChange('Login')}>
+          <Nav.Link className="nav-link active"onClick={() => handlePageChange('Login')}>
            Sign Up
           </Nav.Link>
         </Nav.Item>
         </li>
           <li>
           <Nav.Item>
-           <Nav.Link className="nav-link active" href="#portfolio" onClick={() => handlePageChange('Profile')}>
+           <Nav.Link className="nav-link active"onClick={() => handlePageChange('Profile')}>
            Profile
           </Nav.Link>
         </Nav.Item>
           </li>
           <li>
           <Nav.Item>
-           <Nav.Link className="nav-link active" href="#resume" onClick={() => handlePageChange('Dashboard')}>
+           <Nav.Link className="nav-link active"onClick={() => handlePageChange('Dashboard')}>
            Dashboard
+          </Nav.Link>
+        </Nav.Item>
+          </li>
+          <li>
+          <Nav.Item>
+           <Nav.Link className="nav-link active"onClick={() => handlePageChange('Post')}>
+           Post
           </Nav.Link>
         </Nav.Item>
           </li>

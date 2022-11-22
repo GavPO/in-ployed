@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Post from './pages/Post';
 
 export default function Incoded() {
   const [currentPage, setCurrentPage] = useState('Homepage');
@@ -22,6 +23,9 @@ export default function Incoded() {
     }
     if (currentPage === 'Profile') {
       return <Profile />;
+    }
+    if (currentPage === 'Post') {
+      return <Post />;
     }
   };
 
