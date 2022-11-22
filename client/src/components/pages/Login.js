@@ -9,11 +9,11 @@ export default function Login() {
 
     <form className="form login-form">
       <div className="form-group">
-        <label for="email-login">Email:</label><br/>
+        <label htmlFor="email-login">Email:</label><br/>
         <input className="form-input" type="text" id="email-login" />
       </div>
       <div className="form-group">
-        <label for="password-login">Password:</label><br/>
+        <label htmlFor="password-login">Password:</label><br/>
         <input className="form-input" type="password" id="password-login" />
       </div>
       <div className="form-group">
@@ -26,15 +26,15 @@ export default function Login() {
 
     <form className="form signup-form">
       <div className="form-group">
-        <label for="name-signup">Name:</label><br/>
+        <label htmlFor="name-signup">Name:</label><br/>
         <input className="form-input" type="text" id="name-signup" />
       </div>
       <div className="form-group">
-        <label for="email-signup">Email:</label><br/>
+        <label htmlFor="email-signup">Email:</label><br/>
         <input className="form-input" type="text" id="email-signup" />
       </div>
       <div className="form-group">
-        <label for="password-signup">Password:</label><br/>
+        <label htmlFor="password-signup">Password:</label><br/>
         <input className="form-input" type="password" id="password-signup" />
       </div>
       <div className="form-group">

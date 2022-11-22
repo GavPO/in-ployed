@@ -4,7 +4,7 @@ body{
     background-color: #27272C;
 }
 
-#profile img{
+#profileImg{
     height: 40vh;
     width: 40vh;
     border-radius: 20px;
@@ -30,8 +30,12 @@ body{
     margin: 10px
 }
 
+.icon{
+    height: 60px;
+}
+
 @media (max-width: 992px) {
-    #profile img{
+    #profileImg{
         height: 20vh;
         width: 20vh;
         margin: 20px;
@@ -43,6 +47,9 @@ body{
         margin: 20px;
     }
     #profile a{
+        margin: 20px;
+    }
+    #contact{
         margin: 20px;
     }
 }
