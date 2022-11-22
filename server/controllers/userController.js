@@ -86,7 +86,7 @@ async function loginUser(req, res) {
     }
 
     const token = signToken(currentUser);
-    return { token, profile };
+    return { token, currentUser };
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -99,4 +99,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  loginUser,
 };
