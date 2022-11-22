@@ -9,6 +9,7 @@ body{
     all: unset;
     background-color: #27272C;
     border-bottom: solid 2px #6EEB83;
+    width: 30vw;
 }
 
 #login button, label{
@@ -17,6 +18,12 @@ body{
 
 .registration{
     padding: 100px;
+}
+
+@media (max-width: 768px) {
+    #login input{
+        width: 70vw;
+    }
 }
 
 @media (max-width: 426px) {
