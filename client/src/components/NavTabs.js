@@ -6,10 +6,10 @@ import logo from '../assets/logo.png';
 function NavTabs({ currentPage, handlePageChange }) {
   return (
     <Navbar className="navbar navbar-expand-lg navbar-dark" collapseOnSelect  expand="lg">
-      <a className="navbar-brand" href="#">
+      <Nav.Link className="navbar-brand" href="#about"onClick={() => handlePageChange('Homepage')}>
         <img src={logo} width="32" height="32" className="d-inline-block align-top" alt=""/>
         In-coded
-      </a>
+          </Nav.Link>
     <Navbar.Toggle />
     <Navbar.Collapse>
       <Nav className="ms-auto d-block">
