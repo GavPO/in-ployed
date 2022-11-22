@@ -8,8 +8,6 @@ Working with React and mongoDB to create a MERN app has been a great experience.
 
 ## Table of Contents (Optional)
 
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -59,5 +57,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ---
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
