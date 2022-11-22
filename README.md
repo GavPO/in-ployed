@@ -15,7 +15,7 @@ Working with React and mongoDB to create a MERN app has been a great experience.
 
 ## Installation
 
-No installation required just use the following link.
+No installation required just use the following link to access our app.
 
 https://in-ployed.herokuapp.com/
 
