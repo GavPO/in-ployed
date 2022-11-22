@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
+const { signToken } = require('../util/auth');
 
 async function getAllUsers(req, res) {
   try {
@@ -83,6 +84,9 @@ async function loginUser(req, res) {
         .json({ message: "Incorrect email or password, please try again" });
       return;
     }
+
+    const token = signToken(currentUser);
+    return { token, profile };
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
