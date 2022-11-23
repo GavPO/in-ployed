@@ -24,16 +24,6 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
   try {
-    const userCheck = User.findOne({
-      where: { username: req.body.username }
-    });
-    console.log(userCheck)
-    if (userCheck) {
-      res
-        .status(400)
-        .json({ message: "That username is already taken! Please try again." });
-      return;
-    }
     const newUser = await User.create(req.body);
     res.status(200).json(newUser);
   } catch (err) {
