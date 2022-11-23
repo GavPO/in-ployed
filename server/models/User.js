@@ -20,7 +20,7 @@ const userSchema = new Schema({
     minlength: 1,
     maxlength: 30,
   },
-  linkdin: {
+  linkedin: {
     type: String,
     required: true,
     minlength: 1,
