@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
-const { signToken } = require('../util/auth');
+const { signToken } = require("../util/auth");
 
 async function getAllUsers(req, res) {
   try {
@@ -59,9 +59,7 @@ async function deleteUser(req, res) {
 
 async function loginUser(req, res) {
   try {
-    const currentUser = await User.findOne({
-      $where: { email: req.body.email },
-    });
+    const currentUser = await User.findOne({ email: req.body.email });
 
     if (!currentUser) {
       res
