@@ -14,9 +14,21 @@ const userSchema = new Schema({
     unique: true,
     match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Enter a valid email"],
   },
+  github: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 30,
+  },
+  linkdin: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 30,
+  },
   password: {
     type: String,
-    require: true,
+    required: true,
     minlength: 5,
   },
   posts: [
