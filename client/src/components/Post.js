@@ -1,7 +1,10 @@
 export default function Post({allPosts}) {
     return (
         allPosts.map((post) => (
-            <h1 key={post._id}>{post.content}</h1>
+        <div key={post._id} class="post">
+            <h3>{post.title}</h3>
+            <code>{post.content}</code>
+        </div>
         ))
     )
 }

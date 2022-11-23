@@ -22,6 +22,9 @@ export default function Incoded() {
     if (currentPage === "Profile") {
       return <Profile />;
     }
+    if (currentPage === 'Post') {
+      return <Post />;
+    }
   };
 
   useEffect(() => {

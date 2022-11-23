@@ -19,6 +19,9 @@ useEffect(() => {
 }, []);
 
 return (
-  <Post allPosts={allPosts} />
+  <div className="container-fluid" id="dashboard">
+      <h1>Dashboard</h1>
+      <Post allPosts={allPosts} />
+    </div>
 )
 };
