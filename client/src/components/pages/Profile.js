@@ -3,7 +3,7 @@ import "../../styles/Profile.css";
 import sampleProfile from "../../assets/sampleProfile.jpg";
 import email from "../../assets/email.png";
 import github from "../../assets/github.png";
-import linkdin from "../../assets/linkdin.png";
+import linkedin from "../../assets/linkedin.png";
 
 export default function Profile() {
   const [singleUser, setSingleUser] = useState([]);
@@ -37,17 +37,14 @@ export default function Profile() {
           </p>
           <h1>Contact:</h1>
           <div id="contact">
-            <a href="https://github.com/johnathanmann" target="_blank">
-              <img className="icon" src={github} />
+            <a href={singleUser.github} target="_blank">
+              <img alt="Github logo" className="icon" src={github} />
             </a>
-            <a
-              href="https://www.linkedin.com/in/johnathan-mann-03548b240/"
-              target="_blank"
-            >
-              <img className="icon" src={linkdin} />
+            <a href={singleUser.email} target="_blank">
+              <img alt="Linkedin logo" className="icon" src={linkedin} />
             </a>
-            <a href="mailto:johnathan.mnn@gmail.com" target="_blank">
-              <img className="icon" src={email} />
+            <a mailto={singleUser.email} target="_blank">
+              <img alt="Email envelope" className="icon" src={email} />
             </a>
           </div>
         </div>
