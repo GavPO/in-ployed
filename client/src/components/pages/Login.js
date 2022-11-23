@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/Login.css";
 
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 
 export default function Login() {
   return (
@@ -30,30 +30,42 @@ export default function Login() {
       <div className="col-md-6 registration">
         <h2>Signup</h2>
 
-    <form className="form signup-form">
-      <div className="form-group">
-        <label htmlFor="name-signup">Name:</label><br/>
-        <input className="form-input" type="text" id="name-signup" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="email-signup">Email:</label><br/>
-        <input className="form-input" type="text" id="email-signup" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="linkedin-signup">Link to Linkedin Account:</label><br/>
-        <input className="form-input" type="text" id="linkedin-signup" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="github-signup">Link to GitHub Account:</label><br/>
-        <input className="form-input" type="text" id="github-signup" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password-signup">Password:</label><br/>
-        <input className="form-input" type="password" id="password-signup" />
-      </div>
-      <div className="form-group">
-        <button className="btn" type="submit">Signup</button>
-
+        <form className="form signup-form">
+          <div className="form-group">
+            <label htmlFor="name-signup">Name:</label>
+            <br />
+            <input className="form-input" type="text" id="name-signup" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email-signup">Email:</label>
+            <br />
+            <input className="form-input" type="text" id="email-signup" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="linkedin-signup">Link to Linkedin Account:</label>
+            <br />
+            <input className="form-input" type="text" id="linkedin-signup" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="github-signup">Link to GitHub Account:</label>
+            <br />
+            <input className="form-input" type="text" id="github-signup" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password-signup">Password:</label>
+            <br />
+            <input
+              className="form-input"
+              type="password"
+              id="password-signup"
+            />
+          </div>
+          <div className="form-group">
+            <button className="btn" type="submit">
+              Signup
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

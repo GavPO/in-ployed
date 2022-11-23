@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/Post.css";
 
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 
 export default function Post() {
   return (

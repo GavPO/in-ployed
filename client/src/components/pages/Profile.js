@@ -5,6 +5,8 @@ import email from "../../assets/email.png";
 import github from "../../assets/github.png";
 import linkedin from "../../assets/linkedin.png";
 
+import Auth from "../../utils/auth";
+
 export default function Profile() {
   const [singleUser, setSingleUser] = useState([]);
 
