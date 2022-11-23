@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
+import Post from "./Post"
 
 export default function Incoded() {
   const [currentPage, setCurrentPage] = useState("Homepage");
