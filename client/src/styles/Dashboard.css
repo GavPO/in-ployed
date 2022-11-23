@@ -1,0 +1,21 @@
+#dashboard h1{
+    color: #6EEB83;
+    margin: 50px;
+}
+
+.post{
+    background-color: #27272C;
+    border: solid 2px #6EEB83;
+    border-radius: .375rem;
+    width: 100;
+    margin: 20px;
+    padding: 20px;
+}
+
+.post h3{
+    color: #6EEB83;
+}
+
+.post code{
+    color: #fff;
+}

@@ -7,6 +7,13 @@ const postSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
   },
+  title: {
+    type: String,
+    required: true,
+    minlength: 1,
+    maxlength: 30,
+    trim: true,
+  },
   content: {
     type: String,
     required: true,
