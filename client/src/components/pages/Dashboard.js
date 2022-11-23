@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import React from 'react';
-import Post from '../Post'
-import '../../styles/Dashboard.css';
+import { useState, useEffect } from "react";
+import React from "react";
+import SinglePost from "../SinglePost";
+import "../../styles/Dashboard.css";
 
-
+// import Auth from "../../utils/auth";
 
 export default function Dashboard() {
 const [allPosts, setAllPosts] = useState([]);
@@ -21,7 +21,7 @@ useEffect(() => {
 return (
   <div className="container-fluid" id="dashboard">
       <h1>Dashboard</h1>
-      <Post allPosts={allPosts} />
+      <SinglePost allPosts={allPosts} />
     </div>
 )
 };
