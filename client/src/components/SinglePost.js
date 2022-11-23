@@ -1,4 +1,4 @@
-export default function Post({allPosts}) {
+export default function SinglePost({allPosts}) {
     return (
         allPosts.map((post) => (
         <div key={post._id} class="post">
