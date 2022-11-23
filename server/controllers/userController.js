@@ -4,7 +4,7 @@ const { signToken } = require('../util/auth');
 
 async function getAllUsers(req, res) {
   try {
-    const allUsers = await User.find().select("-__v").populate("posts");
+    const allUsers = await User.find().select("-__v").select('-password').populate("posts");
     res.status(200).json(allUsers);
   } catch (err) {
     console.error(err);
@@ -14,7 +14,7 @@ async function getAllUsers(req, res) {
 
 async function getUserById(req, res) {
   try {
-    const singleUser = await User.findById(req.params.userId);
+    const singleUser = await User.findById(req.params.userId).select("-__v").select('-password');
     res.status(200).json(singleUser);
   } catch (err) {
     console.error(err);
@@ -38,7 +38,7 @@ async function updateUser(req, res) {
       { _id: req.params.userId },
       { $set: req.body },
       { new: true }
-    ).select("-__v");
+    ).select("-__v").select('-password');
     res.status(200).json(updatedUser);
   } catch (err) {
     console.error(err);
