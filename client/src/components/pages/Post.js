@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/Post.css";
 
+
 // import Auth from "../../utils/auth";
 
 async function postForm() {
@@ -30,7 +31,7 @@ if (postTitle, postContent) {
 };
 
 export default function Post() {
-  return(
+  return (
     <div className="container-fluid" id="createPost">
       <h1>New Post</h1>
       <form>
@@ -53,11 +54,13 @@ export default function Post() {
           ></textarea>
         </div>
         <div className="form-group">
+
           <button onClick={() =>postForm()} className="btn" type="submit">
+
             Submit
           </button>
         </div>
       </form>
     </div>
-  )
+  );
 }
