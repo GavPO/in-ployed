@@ -3,7 +3,7 @@ import React from "react";
 import Post from "../Post";
 import "../../styles/Dashboard.css";
 
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 
 export default function Dashboard() {
   const [allPosts, setAllPosts] = useState([]);

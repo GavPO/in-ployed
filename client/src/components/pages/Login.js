@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/Login.css";
 
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 
 export default function Login() {
   return (
@@ -41,6 +41,7 @@ export default function Login() {
       </div>
       <div className="form-group">
         <button className="btn" type="submit">Signup</button>
+
       </div>
     </form>
   </div>
