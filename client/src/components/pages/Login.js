@@ -34,6 +34,14 @@ export default function Login() {
         <input className="form-input" type="text" id="email-signup" />
       </div>
       <div className="form-group">
+        <label htmlFor="linkedin-signup">Link to Linkedin Account:</label><br/>
+        <input className="form-input" type="text" id="linkedin-signup" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="github-signup">Link to GitHub Account:</label><br/>
+        <input className="form-input" type="text" id="github-signup" />
+      </div>
+      <div className="form-group">
         <label htmlFor="password-signup">Password:</label><br/>
         <input className="form-input" type="password" id="password-signup" />
       </div>
