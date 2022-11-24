@@ -2,7 +2,6 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const { signToken } = require("../utils/auth");
 
-
 async function getAllUsers(req, res) {
   try {
     const allUsers = await User.find()
@@ -20,7 +19,8 @@ async function getUserById(req, res) {
   try {
     const singleUser = await User.findById(req.params.userId)
       .select("-__v")
-      .select("-password");
+      .select("-password")
+      .populate("posts");
     res.status(200).json(singleUser);
   } catch (err) {
     console.error(err);
@@ -30,7 +30,7 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
   try {
-    const user = await User.create(req.body);
+    const user = await User.create(req.body).select("-__v").select("-password");
     const token = signToken(user);
     res.json({ token, user });
   } catch (err) {
@@ -57,7 +57,9 @@ async function updateUser(req, res) {
 
 async function deleteUser(req, res) {
   try {
-    const deletedUser = await User.findOneAndRemove({ _id: req.params.userId });
+    const deletedUser = await User.findOneAndRemove({ _id: req.params.userId })
+      .select("-__v")
+      .select("-password");
     await Post.deleteMany({ _id: { $in: deletedUser.posts } });
     res.status(200).json(deletedUser);
   } catch (err) {
@@ -68,11 +70,11 @@ async function deleteUser(req, res) {
 
 async function loginUser(req, res) {
   try {
-
     const user = await User.findOne({
       $where: { email: req.body.email },
-    });
-
+    })
+      .select("-__v")
+      .select("-password");
 
     if (!user) {
       res
@@ -81,7 +83,7 @@ async function loginUser(req, res) {
       return;
     }
 
-    const validPassword = User.isCorrectPassword(req.body.password);
+    const validPassword = user.isCorrectPassword(req.body.password);
     if (!validPassword) {
       res
         .status(400)
@@ -90,7 +92,7 @@ async function loginUser(req, res) {
     }
 
     const token = signToken(user);
-    return { token, user };
+    res.status(200).json({ token, user });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

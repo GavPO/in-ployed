@@ -50,84 +50,84 @@ export default function Login() {
   };
 
 
-export default function Login(props) {
-  const [loginState, setLoginState] = useState({ email: "", password: "" });
+// export default function Login(props) {
+//   const [loginState, setLoginState] = useState({ email: "", password: "" });
 
-  async function loginUser() {
-    const response = await fetch("/login", {
-      method: "POST",
-      body: JSON.stringify(loginState),
-    });
-    return response.json();
-  }
+//   // async function loginUser() {
+//   //   const response = await fetch("/login", {
+//   //     method: "POST",
+//   //     body: JSON.stringify(loginState),
+//   //   });
+//   //   return response.json();
+//   // }
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    // console.log(loginState);
-    try {
-      const { token, currentUser } = await loginUser();
-      console.log(token, currentUser);
+//   // const handleFormSubmit = async (event) => {
+//   //   event.preventDefault();
+//   //   // console.log(loginState);
+//   //   try {
+//   //     const { token, currentUser } = await loginUser();
+//   //     console.log(token, currentUser);
 
-      Auth.login(token);
-    } catch (e) {
-      console.error(e);
-    }
+//   //     Auth.login(token);
+//   //   } catch (e) {
+//   //     console.error(e);
+//   //   }
 
-    // clear form values
-    setLoginState({
-      email: "",
-      password: "",
-    });
-  };
+//     // clear form values
+//     setLoginState({
+//       email: "",
+//       password: "",
+//     });
+//   };
 
-  const onInputChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name, value);
-    setLoginState({
-      ...loginState,
-      [name]: value,
-    });
-  };
+//   const onInputChange = (e) => {
+//     const { name, value } = e.target;
+//     console.log(name, value);
+//     setLoginState({
+//       ...loginState,
+//       [name]: value,
+//     });
+//   };
 
-const signUp = function (props) => {
-  const [signUpState, setSignUpState] = useState({ email: "", password: "",  });
+// const signUp = function (props) => {
+//   const [signUpState, setSignUpState] = useState({ email: "", password: "",  });
 
-  async function loginUser() {
-    const response = await fetch("/login", {
-      method: "POST",
-      body: JSON.stringify(loginState),
-    });
-    return response.json();
-  }
+//   async function loginUser() {
+//     const response = await fetch("/login", {
+//       method: "POST",
+//       body: JSON.stringify(loginState),
+//     });
+//     return response.json();
+//   }
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    // console.log(loginState);
-    try {
-      const { token, currentUser } = await loginUser();
-      console.log(token, currentUser);
+//   const handleFormSubmit = async (event) => {
+//     event.preventDefault();
+//     // console.log(loginState);
+//     try {
+//       const { token, currentUser } = await loginUser();
+//       console.log(token, currentUser);
 
-      Auth.login(token);
-    } catch (e) {
-      console.error(e);
-    }
+//       Auth.login(token);
+//     } catch (e) {
+//       console.error(e);
+//     }
 
-    // clear form values
-    setLoginState({
-      email: "",
-      password: "",
-    });
-  };
+//     // clear form values
+//     setLoginState({
+//       email: "",
+//       password: "",
+//     });
+//   };
 
-  const onSignUpChange = (e) => {
-    const { name, value } = e.target;
-    console.log(name, value);
-    setLoginState({
-      ...signUpState,
-      [name]: value,
-    });
-  };
-
+//   const onSignUpChange = (e) => {
+//     const { name, value } = e.target;
+//     console.log(name, value);
+//     setLoginState({
+//       ...signUpState,
+//       [name]: value,
+//     });
+//   };
+// }
 
   return (
     <div className="row" id="login">
