@@ -83,7 +83,7 @@ async function loginUser(req, res) {
       return;
     }
 
-    const validPassword = User.isCorrectPassword(req.body.password);
+    const validPassword = user.isCorrectPassword(req.body.password);
     if (!validPassword) {
       res
         .status(400)
