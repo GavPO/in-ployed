@@ -2,6 +2,7 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const { signToken } = require("../utils/auth");
 
+
 async function getAllUsers(req, res) {
   try {
     const allUsers = await User.find()
@@ -67,9 +68,11 @@ async function deleteUser(req, res) {
 
 async function loginUser(req, res) {
   try {
+
     const user = await User.findOne({
       $where: { email: req.body.email },
     });
+
 
     if (!user) {
       res
