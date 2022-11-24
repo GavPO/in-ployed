@@ -16,13 +16,11 @@ const userSchema = new Schema({
   },
   github: {
     type: String,
-    required: true,
     minlength: 1,
     maxlength: 30,
   },
   linkdin: {
     type: String,
-    required: true,
     minlength: 1,
     maxlength: 30,
   },

@@ -1,8 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/Login.css";
+import auth from "../../utils/auth";
+import { signupAction } from "../../utils/signup";
+import { loginAction } from "../../utils/login";
+// import Auth from "../utils/auth";
 
+export default function Login() {
+  const [signupData, setSignupData] = useState({
+    password: "",
+    email: "",
+    username: "",
+  });
+  const [loginData, setLoginData] = useState({
+    password: "",
+    email: "",
+  });
 
-// import Auth from "../../utils/auth";
+  const handleInputChangeLogin = (event) => {
+    const { name, value } = event.target;
+    setLoginData({ ...loginData, [name]: value });
+  };
+
+  const handleInputChangeSignup = (event) => {
+    const { name, value } = event.target;
+    setSignupData({ ...signupData, [name]: value });
+  };
+  const handleSignup = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await signupAction(signupData);
+      const data = await response.json();
+      auth.login(data.token);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await loginAction(loginData);
+      const data = await response.json();
+      auth.login(data.token);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 
 export default function Login(props) {
@@ -89,17 +134,19 @@ const signUp = function (props) => {
       <div className="col-md-6 registration">
         <h2>Login</h2>
 
-        <form onSubmit={handleFormSubmit} className="form login-form">
+
+        <form onSubmit={handleLogin} className="form login-form">
+
           <div className="form-group">
             <label htmlFor="email-login">Email:</label>
             <br />
             <input
               className="form-input"
-              name="email"
               type="text"
-              value={loginState.email}
               id="email-login"
-              onChange={onInputChange}
+              onChange={handleInputChangeLogin}
+              value={loginData.email}
+              name="email"
             />
           </div>
           <div className="form-group">
@@ -107,11 +154,11 @@ const signUp = function (props) => {
             <br />
             <input
               className="form-input"
-              name="password"
               type="password"
-              value={loginState.password}
               id="password-login"
-              onChange={onInputChange}
+              onChange={handleInputChangeLogin}
+              value={loginData.password}
+              name="password"
             />
           </div>
           <div className="form-group">
@@ -124,7 +171,8 @@ const signUp = function (props) => {
       <div className="col-md-6 registration">
         <h2>Signup</h2>
 
-        <form onSubmit={handleFormSubmit} className="form signup-form">
+
+        <form onSubmit={handleSignup} className="form signup-form">
           <div className="form-group">
             <label htmlFor="name-signup">Name:</label>
             <br />
@@ -132,8 +180,9 @@ const signUp = function (props) => {
               className="form-input"
               type="text"
               id="name-signup"
-              onChange={onSignUpChange}
-              value={signUpState.username}
+              onChange={handleInputChangeSignup}
+              value={signupData.username}
+              name="username"
             />
           </div>
           <div className="form-group">
@@ -143,8 +192,9 @@ const signUp = function (props) => {
               className="form-input"
               type="text"
               id="email-signup"
-              onChange={onSignUpChange}
-              value={signUpState.email}
+              onChange={handleInputChangeSignup}
+              value={signupData.email}
+              name="email"
             />
           </div>
           <div className="form-group">
@@ -154,8 +204,9 @@ const signUp = function (props) => {
               className="form-input"
               type="password"
               id="password-signup"
-              onChange={onSignUpChange}
-              value={signUpState.password}
+              onChange={handleInputChangeSignup}
+              value={signupData.password}
+              name="password"
             />
           </div>
           <div className="form-group">

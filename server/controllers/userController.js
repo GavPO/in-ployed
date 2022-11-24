@@ -1,10 +1,14 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
-const { signToken } = require("../util/auth");
+const { signToken } = require("../utils/auth");
+
 
 async function getAllUsers(req, res) {
   try {
-    const allUsers = await User.find().select("-__v").select('-password').populate("posts");
+    const allUsers = await User.find()
+      .select("-__v")
+      .select("-password")
+      .populate("posts");
     res.status(200).json(allUsers);
   } catch (err) {
     console.error(err);
@@ -14,7 +18,9 @@ async function getAllUsers(req, res) {
 
 async function getUserById(req, res) {
   try {
-    const singleUser = await User.findById(req.params.userId).select("-__v").select('-password');
+    const singleUser = await User.findById(req.params.userId)
+      .select("-__v")
+      .select("-password");
     res.status(200).json(singleUser);
   } catch (err) {
     console.error(err);
@@ -24,8 +30,9 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
   try {
-    const newUser = await User.create(req.body);
-    res.status(200).json(newUser);
+    const user = await User.create(req.body);
+    const token = signToken(user);
+    res.json({ token, user });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -38,7 +45,9 @@ async function updateUser(req, res) {
       { _id: req.params.userId },
       { $set: req.body },
       { new: true }
-    ).select("-__v").select('-password');
+    )
+      .select("-__v")
+      .select("-password");
     res.status(200).json(updatedUser);
   } catch (err) {
     console.error(err);
@@ -59,9 +68,13 @@ async function deleteUser(req, res) {
 
 async function loginUser(req, res) {
   try {
-    const currentUser = await User.findOne({ email: req.body.email });
 
-    if (!currentUser) {
+    const user = await User.findOne({
+      $where: { email: req.body.email },
+    });
+
+
+    if (!user) {
       res
         .status(400)
         .json({ message: "Incorrect email or password, please try again" });
@@ -76,8 +89,8 @@ async function loginUser(req, res) {
       return;
     }
 
-    const token = signToken(currentUser);
-    return { token, currentUser };
+    const token = signToken(user);
+    return { token, user };
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
