@@ -1,6 +1,6 @@
 export const loginAction = (loginData) => {
-  return fetch("/login", {
-    method: "GET",
+  return fetch("/api/users/login", {
+    method: "POST",
     body: JSON.stringify(loginData),
     headers: {
       "Content-Type": "application/json",

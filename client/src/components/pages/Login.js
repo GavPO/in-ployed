@@ -1,23 +1,49 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Login.css";
-import { signupAction } from "../../utils";
+import auth from "../../utils/auth";
+import { signupAction } from "../../utils/signup";
+import { loginAction } from "../../utils/login";
 // import Auth from "../utils/auth";
 
 export default function Login() {
-  const [formData, setFormData] = useState([]);
-  const [signupData, setSignupData] = useState([]);
-  const [loginData, setLoginData] = useState([]);
+  const [signupData, setSignupData] = useState({
+    password: "",
+    email: "",
+    username: "",
+  });
+  const [loginData, setLoginData] = useState({
+    password: "",
+    email: "",
+  });
 
-  const handleInputChange = (event) => {
+  const handleInputChangeLogin = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setLoginData({ ...loginData, [name]: value });
   };
 
+  const handleInputChangeSignup = (event) => {
+    const { name, value } = event.target;
+    setSignupData({ ...signupData, [name]: value });
+  };
   const handleSignup = async (event) => {
     event.preventDefault();
-    setSignupData(formData);
+
     try {
       const response = await signupAction(signupData);
+      const data = await response.json();
+      auth.login(data.token);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await loginAction(loginData);
+      const data = await response.json();
+      auth.login(data.token);
     } catch (err) {
       console.error(err);
     }
@@ -28,7 +54,7 @@ export default function Login() {
       <div className="col-md-6 registration">
         <h2>Login</h2>
 
-        <form className="form login-form">
+        <form onSubmit={handleLogin} className="form login-form">
           <div className="form-group">
             <label htmlFor="email-login">Email:</label>
             <br />
@@ -36,7 +62,9 @@ export default function Login() {
               className="form-input"
               type="text"
               id="email-login"
-              onChange={handleInputChange}
+              onChange={handleInputChangeLogin}
+              value={loginData.email}
+              name="email"
             />
           </div>
           <div className="form-group">
@@ -46,7 +74,9 @@ export default function Login() {
               className="form-input"
               type="password"
               id="password-login"
-              onChange={handleInputChange}
+              onChange={handleInputChangeLogin}
+              value={loginData.password}
+              name="password"
             />
           </div>
           <div className="form-group">
@@ -67,8 +97,9 @@ export default function Login() {
               className="form-input"
               type="text"
               id="name-signup"
-              onChange={handleInputChange}
-              value={formData.username}
+              onChange={handleInputChangeSignup}
+              value={signupData.username}
+              name="username"
             />
           </div>
           <div className="form-group">
@@ -78,8 +109,9 @@ export default function Login() {
               className="form-input"
               type="text"
               id="email-signup"
-              onChange={handleInputChange}
-              value={formData.email}
+              onChange={handleInputChangeSignup}
+              value={signupData.email}
+              name="email"
             />
           </div>
           <div className="form-group">
@@ -89,8 +121,9 @@ export default function Login() {
               className="form-input"
               type="password"
               id="password-signup"
-              onChange={handleInputChange}
-              value={formData.password}
+              onChange={handleInputChangeSignup}
+              value={signupData.password}
+              name="password"
             />
           </div>
           <div className="form-group">
