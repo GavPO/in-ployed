@@ -67,10 +67,24 @@ async function deletePost(req, res) {
     };
 };
 
+async function upvotePost(req, res) {
+    try {
+        await Post.findOneAndUpdate(
+            { _id: req.params.postId},
+            { $inc: { upvotes: 1 }},
+            { new: true }
+            ).select('-__v');
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err)
+    };
+};
+
 module.exports = {
     getAllPosts,
     getPostById,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    upvotePost
 }
