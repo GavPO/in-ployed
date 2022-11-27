@@ -3,7 +3,6 @@ import "../../styles/Login.css";
 import auth from "../../utils/auth";
 import { signupAction } from "../../utils/signup";
 import { loginAction } from "../../utils/login";
-// import Auth from "../utils/auth";
 
 export default function Login() {
   const [signupData, setSignupData] = useState({
