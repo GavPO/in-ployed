@@ -23,7 +23,7 @@ if (postTitle, postContent) {
     },
   });
   if (response.ok) {
-    console.log('Comment Posted');
+    console.log('Post Posted');
   } else {
     alert(response.statusText);
   }
