@@ -49,9 +49,9 @@ export default function Login() {
   };
 
   return (
-    <div className="row" id='login'>
-  <div className="col-md-6 registration">
-    <h2>Login</h2>
+    <div className="row" id="login">
+      <div className="col-md-6 registration">
+        <h2>Login</h2>
 
         <form onSubmit={handleLogin} className="form login-form">
           <div className="form-group">
@@ -85,10 +85,8 @@ export default function Login() {
           </div>
         </form>
       </div>
-    </form>
-  </div>
-  <div className="col-md-6 registration">
-    <h2>Signup</h2>
+      <div className="col-md-6 registration">
+        <h2>Signup</h2>
 
         <form onSubmit={handleSignup} className="form signup-form">
           <div className="form-group">
