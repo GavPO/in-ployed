@@ -29,48 +29,67 @@ function NavTabs({ currentPage, handlePageChange }) {
       <Navbar.Toggle />
       <Navbar.Collapse>
         <Nav className="ms-auto d-block">
-          <ul>
-            <li>
-              <Nav.Item>
-                <Nav.Link
-                  className="nav-link active"
-                  onClick={() => handlePageChange("Login")}
-                >
-                  Login/Sign Up
-                </Nav.Link>
-              </Nav.Item>
-            </li>
-            <li>
-              <Nav.Item>
-                <Nav.Link
-                  className="nav-link active"
-                  onClick={() => handlePageChange("Profile")}
-                >
-                  Profile
-                </Nav.Link>
-              </Nav.Item>
-            </li>
-            <li>
-              <Nav.Item>
-                <Nav.Link
-                  className="nav-link active"
-                  onClick={() => handlePageChange("Dashboard")}
-                >
-                  Dashboard
-                </Nav.Link>
-              </Nav.Item>
-            </li>
-            <li>
-              <Nav.Item>
-                <Nav.Link
-                  className="nav-link active"
-                  onClick={() => handlePageChange("Post")}
-                >
-                  Post
-                </Nav.Link>
-              </Nav.Item>
-            </li>
-          </ul>
+          {Auth.loggedIn() ? (
+            <>
+              <ul>
+                <li>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="nav-link active"
+                      onClick={() => handlePageChange("Profile")}
+                    >
+                      Profile
+                    </Nav.Link>
+                  </Nav.Item>
+                </li>
+                <li>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="nav-link active"
+                      onClick={() => handlePageChange("Dashboard")}
+                    >
+                      Dashboard
+                    </Nav.Link>
+                  </Nav.Item>
+                </li>
+                <li>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="nav-link active"
+                      onClick={() => handlePageChange("Post")}
+                    >
+                      Post
+                    </Nav.Link>
+                  </Nav.Item>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <>
+              <ul>
+                <li>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="nav-link active"
+                      onClick={() => handlePageChange("Login")}
+                    >
+                      Login
+                    </Nav.Link>
+                  </Nav.Item>
+                </li>
+                <li>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="nav-link active"
+                      onClick={() => handlePageChange("Login")}
+                    >
+                      Sign Up
+                    </Nav.Link>
+                  </Nav.Item>
+                </li>
+              </ul>
+            </>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

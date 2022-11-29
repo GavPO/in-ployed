@@ -76,10 +76,8 @@ async function deleteUser(req, res) {
 async function loginUser(req, res) {
   try {
     const user = await User.findOne({
-      $where: { email: req.body.email },
-    })
-      .select("-__v")
-      .select("-password");
+      email: req.body.email,
+    }).select("-__v");
 
     if (!user) {
       res
