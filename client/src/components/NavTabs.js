@@ -14,7 +14,6 @@ function NavTabs({ currentPage, handlePageChange }) {
     >
       <Nav.Link
         className="navbar-brand"
-        href="#about"
         onClick={() => handlePageChange("Homepage")}
       >
         <img

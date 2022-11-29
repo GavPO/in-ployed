@@ -1,12 +1,9 @@
 import React from "react";
 import "../../styles/Post.css";
 
-
-// import Auth from "../../utils/auth";
-
 async function postForm() {
     
-  // Get post title
+// Get post title
 const postTitle = document.getElementById('postTitle').value;
 // Get post content
 const postContent = document.getElementById('postContent').value;
@@ -44,7 +41,7 @@ export default function Post() {
         </div>
         <div className="form-group">
           <h3>
-            <label htmlFor="code">Your Code:</label>
+            <label htmlFor="code">Your Post:</label>
           </h3>
           <br />
           <textarea

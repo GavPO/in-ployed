@@ -20,11 +20,11 @@ export default function Homepage({ currentPage, handlePageChange }) {
         </div>
         <div className="flex-column col-lg-6" id="computer">
           <div id="computer">
-            <h1>Looking to share some code?</h1>
+            <h2>Lets get connected with In-coded</h2>
             <p className="align-middle">
-              Share your favorite reusable code snippets and
-              <br /> connect with other developers.
+             On In-coded you can share all things web dev with your fellow developers. Weather its your own code snippets, cool new technologies, or a resource you found helpful. Everyone needs a good friend, and<br/> In-Coded is always here for you! So ask yourself, are you in?
             </p>
+            {/* Depending on if the user is logged in or not different navtabs will display */}
             {Auth.loggedIn() ? (
               <></>
             ) : (
