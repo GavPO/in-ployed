@@ -15,7 +15,6 @@ export default function Profile() {
     const tokenData = Auth.getProfile();
     const userInfo = tokenData.data._id;
     setUserID(userInfo);
-    console.log(userID);
     const response = await fetch(`/api/users/${userID}`);
     const singleUser = await response.json();
 
