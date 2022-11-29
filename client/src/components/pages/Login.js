@@ -25,20 +25,28 @@ export default function Login() {
     setSignupData({ ...signupData, [name]: value });
   };
   const handleSignup = async (event) => {
+    event.preventDefault();
     try {
       const response = await signupAction(signupData);
       const data = await response.json();
-      auth.login(data.token);
+      if (response.ok) {
+        auth.login(data.token);
+        window.location.reload();
+      }
     } catch (err) {
       console.error(err);
     }
   };
 
   const handleLogin = async (event) => {
+    event.preventDefault();
     try {
       const response = await loginAction(loginData);
       const data = await response.json();
-      auth.login(data.token);
+      if (response.ok) {
+        auth.login(data.token);
+        window.location.reload();
+      }
     } catch (err) {
       console.error(err);
     }

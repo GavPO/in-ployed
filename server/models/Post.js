@@ -15,7 +15,6 @@ const postSchema = new Schema({
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 550,
     trim: true,
   },
   replies: [replySchema],

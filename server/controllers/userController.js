@@ -86,7 +86,8 @@ async function loginUser(req, res) {
       return;
     }
 
-    const validPassword = user.isCorrectPassword(req.body.password);
+    const validPassword = await user.isCorrectPassword(req.body.password);
+    console.log(validPassword)
     if (!validPassword) {
       res
         .status(400)
