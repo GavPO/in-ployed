@@ -36,16 +36,6 @@ function NavTabs({ currentPage, handlePageChange }) {
                   <Nav.Item>
                     <Nav.Link
                       className="nav-link active"
-                      onClick={() => handlePageChange("Profile")}
-                    >
-                      Profile
-                    </Nav.Link>
-                  </Nav.Item>
-                </li>
-                <li>
-                  <Nav.Item>
-                    <Nav.Link
-                      className="nav-link active"
                       onClick={() => handlePageChange("Dashboard")}
                     >
                       Dashboard
@@ -59,6 +49,26 @@ function NavTabs({ currentPage, handlePageChange }) {
                       onClick={() => handlePageChange("Post")}
                     >
                       Post
+                    </Nav.Link>
+                  </Nav.Item>
+                </li>
+                <li>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="nav-link active"
+                      onClick={() => handlePageChange("Profile")}
+                    >
+                      Profile
+                    </Nav.Link>
+                  </Nav.Item>
+                </li>
+                <li>
+                  <Nav.Item>
+                    <Nav.Link
+                      className="nav-link active"
+                      onClick={() => handlePageChange("UpdateProfile")}
+                    >
+                      Update Profile
                     </Nav.Link>
                   </Nav.Item>
                 </li>

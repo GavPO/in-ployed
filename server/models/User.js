@@ -19,10 +19,15 @@ const userSchema = new Schema({
     minlength: 1,
     maxlength: 30,
   },
-  linkdin: {
+  linkedin: {
     type: String,
     minlength: 1,
     maxlength: 30,
+  },
+  description: {
+    type: String,
+    minlength: 1,
+    maxlength: 500,
   },
   password: {
     type: String,
