@@ -20,6 +20,7 @@ body{
     padding: 100px;
 }
 
+
 @media (max-width: 768px) {
     #login input{
         width: 70vw;

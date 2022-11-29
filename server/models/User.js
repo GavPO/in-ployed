@@ -19,10 +19,15 @@ const userSchema = new Schema({
     minlength: 1,
     maxlength: 30,
   },
-  linkdin: {
+  linkedin: {
     type: String,
     minlength: 1,
     maxlength: 30,
+  },
+  description: {
+    type: String,
+    minlength: 1,
+    maxlength: 500,
   },
   password: {
     type: String,
@@ -50,7 +55,8 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+  console.log(this);
+  return await bcrypt.compare(password, this.password);
 };
 
 const User = model("User", userSchema);

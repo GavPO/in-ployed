@@ -30,7 +30,12 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
   try {
-    const user = await User.create(req.body).select("-__v").select("-password");
+    // const userCheck = await User.find({ username: req.body.username })
+    // if (userCheck) {
+    //   res.status(403).json({ message: "Username already taken, please try again" });
+    //   return;
+    // }
+    const user = await User.create(req.body);
     const token = signToken(user);
     res.json({ token, user });
   } catch (err) {
@@ -71,10 +76,8 @@ async function deleteUser(req, res) {
 async function loginUser(req, res) {
   try {
     const user = await User.findOne({
-      $where: { email: req.body.email },
-    })
-      .select("-__v")
-      .select("-password");
+      email: req.body.email,
+    }).select("-__v");
 
     if (!user) {
       res
@@ -92,7 +95,7 @@ async function loginUser(req, res) {
     }
 
     const token = signToken(user);
-    res.status(200).json({ token, user });
+    res.json({ token, user });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);

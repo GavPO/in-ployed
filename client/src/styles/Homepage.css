@@ -24,19 +24,24 @@ body{
     text-align: right;
 }
 
-#jumbotronText{
-    margin: 150px 100px 150px 0px;
+#computer{
+    padding: 75px 50px 150px 0px;
     color: #6EEB83;
 }
 
-#jumbotronText p{
+#computer p{
     color: #fff;
     font-size: large;
 }
 
+#mobile h1{
+    display: none;
+}
+
 .btn{
-    background-color: #6EEB83;
-    color: #FFF;
+    background-color: #27272C;
+    border: solid 2px #6EEB83;
+    color: #6EEB83;
     text-decoration: none;
 }
 
@@ -47,17 +52,27 @@ body{
     .jumbotron{
         height: auto;
     }
-    #jumbotronText{
+    #computer{
         margin: 20px;
         color: #6EEB83;
         text-align: center;
+        padding: 0px;
     }
     #jumbotron1{
         display: none;
     }
-    
     #jumbotron2{
         display: block;
         margin: auto;
     }
+    #mobile h1{
+        display: block;
+        color: #6EEB83;
+        text-align: center;
+        margin: 15px;
+    }
+    #computer h1{
+        display: none;
+    }
+    
 }
