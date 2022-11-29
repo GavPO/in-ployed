@@ -1,10 +1,10 @@
 import React from "react";
 import "../../styles/Post.css";
-
 import Auth from "../../utils/auth.js";
 
 async function postForm() {
-  const userProfile = Auth.getProfile();
+
+const userProfile = Auth.getProfile();
     
 // Get profile description
 const profileDescription = document.getElementById('profileDescription').value;
