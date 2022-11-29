@@ -25,7 +25,7 @@ const userSchema = new Schema({
     maxlength: 30,
   },
   description: {
-    type: Text,
+    type: String,
     minlength: 1,
     maxlength: 500,
   },
