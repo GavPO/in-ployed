@@ -16,6 +16,14 @@
     width: 80vw;
 }
 
+.btn{
+    background-color: #27272C;
+    border: solid 2px #6EEB83;
+    color: #6EEB83;
+    text-decoration: none;
+    margin-top: 5px
+}
+
 @media (max-width: 426px) {
     #createPost h1{
         margin: 20px;
