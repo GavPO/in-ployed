@@ -24,4 +24,8 @@ li{
     ul{
         padding-left: 20px;
     }
+
+    .navbar-toggler{
+        margin: 10px;
+    }
 }
