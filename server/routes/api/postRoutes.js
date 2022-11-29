@@ -8,13 +8,13 @@ const {
     upvotePost,
 } = require('../../controllers/postController');
 
-// /api/posts
+// /api/posts/
 router.route('/').get(getAllPosts).post(createPost);
 
-// /api/Posts/:userId
-router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);;
+// /api/Posts/postId
+router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);
 
-// /api/Posts/PostId
-router.route('/upvotes/:postId').put(upvotePost)
+// /api/Posts/upvotes
+router.route('/upvotes/:postId/:userId').put(upvotePost);
 
 module.exports = router;
