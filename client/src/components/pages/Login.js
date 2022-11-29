@@ -25,8 +25,6 @@ export default function Login() {
     setSignupData({ ...signupData, [name]: value });
   };
   const handleSignup = async (event) => {
-    event.preventDefault();
-
     try {
       const response = await signupAction(signupData);
       const data = await response.json();
@@ -37,8 +35,6 @@ export default function Login() {
   };
 
   const handleLogin = async (event) => {
-    event.preventDefault();
-
     try {
       const response = await loginAction(loginData);
       const data = await response.json();
