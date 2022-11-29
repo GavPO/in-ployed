@@ -75,9 +75,8 @@ async function deletePost(req, res) {
 
 async function upvotePost(req, res) {
   try {
-    // const thisPost = await Post.findById(req.params.postId)
-    // const upvoteCheck = await Post.findOne({_id: req.params.postId, "upvotes.userId": req.params.userId});
-    const upvoteCheck = false
+    // const thisPost = await Post.findById(req.params.postId)?
+    const upvoteCheck = await Post.findOne({_id: req.params.postId, "upvotes.userId": req.params.userId});
     if (upvoteCheck) {
         res.status(200).json({ message: "You have already upvoted this post!"});
         return;
