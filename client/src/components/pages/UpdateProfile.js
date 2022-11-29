@@ -9,7 +9,7 @@ async function postForm() {
 // Get profile description
 const profileDescription = document.getElementById('profileDescription').value;
 // Get linkden
-const profileLinkden = document.getElementById('linkeden').value;
+const profileLinkden = document.getElementById('linkedin').value;
 // Get github
 const profileGithub = document.getElementById('github').value;
 // Make post to database so we can show it on the site

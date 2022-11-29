@@ -3,8 +3,15 @@ import "../../styles/Profile.css";
 import email from "../../assets/email.png";
 import github from "../../assets/github.png";
 import linkedin from "../../assets/linkedin.png";
-
 import Auth from "../../utils/auth";
+
+function Mailto({ email,  ...props }) {
+  return (
+    <a href={`mailto:${email}`}>
+      {props.children}
+    </a>
+  );
+}
 
 export default function Profile() {
   const [singleUser, setSingleUser] = useState([]);
@@ -39,9 +46,9 @@ export default function Profile() {
             <a href={singleUser.linkedin} target="_blank">
               <img alt="Linkedin logo" className="icon" src={linkedin} />
             </a>
-            <a mailto={singleUser.email} target="_blank">
-              <img alt="Email envelope" className="icon" src={email} />
-            </a>
+            <Mailto email={singleUser.email}>
+            <img alt="Email envelope" className="icon" src={email} />
+            </Mailto>
           </div>
         </div>
       </div>
