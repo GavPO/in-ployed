@@ -9,6 +9,7 @@ import "../../styles/Dashboard.css";
 
 export default function Dashboard() {
   const [allPosts, setAllPosts] = useState([]);
+  const [upvoteCount, setUpvoteCount] = useState(0);
 
   async function getPosts() {
     const response = await fetch("/api/posts");
@@ -20,10 +21,19 @@ export default function Dashboard() {
     getPosts();
   }, []);
 
+  async function handlePostUpvote(event, postId) {
+    event.preventDefault();
+    const response = await fetch(`/api/posts/upvote/${postId}`, {
+      method: 'PUT',
+    });
+    const singlePost = await response.json();
+    console.log(singlePost)
+  };
+
   return (
     <div className="container-fluid" id="dashboard">
       <h1>Dashboard</h1>
-      <SinglePost allPosts={allPosts} />
+      <SinglePost allPosts={allPosts} handlePostUpvote={handlePostUpvote} upvoteCount={upvoteCount} />
     </div>
   );
 }

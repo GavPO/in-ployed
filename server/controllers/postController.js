@@ -69,11 +69,12 @@ async function deletePost(req, res) {
 
 async function upvotePost(req, res) {
     try {
-        await Post.findOneAndUpdate(
+        const upvotedPost = await Post.findOneAndUpdate(
             { _id: req.params.postId},
             { $inc: { upvotes: 1 }},
             { new: true }
             ).select('-__v');
+            res.status(200).json(upvotedPost)
     } catch (err) {
         console.error(err);
         res.status(500).json(err)
