@@ -2,7 +2,7 @@
 
 ## Description
 
-Provide a resource of friends in tech jobs who post positions at their company and provide a reference.
+Provide a resource for website developers to share code, share information, and to build a community.
 
 Working with React and mongoDB to create a MERN app has been a great experience. Each person on the team has learned and implement ideas / code that required research and time.
 
@@ -23,14 +23,14 @@ https://in-ployed.herokuapp.com/
 
 Allows users to connect to jobs based on a circle of Peers.
 
-![alt text](./client/src/assets/screenshot.png)
+![Screenshot of the homepage of In-Coded.](./client/src/assets/screenshot.png)
 
 ## Credits
 
-Johnathan Mann - Frontend development and UI design
-Matthew Tierney - Frontend development
-Gavin Orlich - Backend build, routing and API
-Steve Weed - Backend build, models, and database.
+Johnathan Mann - Frontend development and UI design <br>
+Matthew Tierney - Frontend development<br>
+Gavin Orlich - Backend build, routing and API<br>
+Steve Weed - Backend build, models, and database<br>
 
 ## License
 
