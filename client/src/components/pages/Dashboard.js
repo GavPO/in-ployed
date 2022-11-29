@@ -21,8 +21,13 @@ export default function Dashboard() {
     getPosts();
   }, []);
 
-  async function handlePostUpvote(event) {
+  async function handlePostUpvote(event, postId) {
     event.preventDefault();
+    const response = await fetch(`/api/posts/upvote/${postId}`, {
+      method: 'PUT',
+    });
+    const singlePost = await response.json();
+    console.log(singlePost)
   };
 
   return (
