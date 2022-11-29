@@ -9,16 +9,21 @@ import Auth from "../../utils/auth";
 
 export default function Profile() {
   const [singleUser, setSingleUser] = useState([]);
+  const [userID, setUserID] = useState([]);
 
   async function getUser() {
-    const response = await fetch("/api/users/:userId");
+    const tokenData = Auth.getProfile();
+    const userInfo = tokenData.data._id;
+    setUserID(userInfo);
+    console.log(userID);
+    const response = await fetch(`/api/users/${userID}`);
     const singleUser = await response.json();
 
     setSingleUser(singleUser);
   }
   useEffect(() => {
     getUser();
-  }, []);
+  });
 
   return (
     <div className="container-fluid" id="profile">
@@ -42,7 +47,7 @@ export default function Profile() {
             <a href={singleUser.github} target="_blank">
               <img alt="Github logo" className="icon" src={github} />
             </a>
-            <a href={singleUser.email} target="_blank">
+            <a href={singleUser.linkedin} target="_blank">
               <img alt="Linkedin logo" className="icon" src={linkedin} />
             </a>
             <a mailto={singleUser.email} target="_blank">
