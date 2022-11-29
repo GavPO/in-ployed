@@ -4,31 +4,35 @@ import React from "react";
 import SinglePost from "../SinglePost";
 import "../../styles/Dashboard.css";
 
-// import Auth from "../../utils/auth";
+import Auth from "../../utils/auth";
 
 
 export default function Dashboard() {
   const [allPosts, setAllPosts] = useState([]);
-  const [upvoteCount, setUpvoteCount] = useState(0);
+  let upvoteCount;
 
   async function getPosts() {
     const response = await fetch("/api/posts");
     const allPosts = await response.json();
 
-    setAllPosts(allPosts);
-  }
+    setAllPosts(allPosts.allPosts);
+  };
+
+  async function handlePostUpvote(postId) {
+    const userProfile = Auth.getProfile();
+    const userId = userProfile.data._id
+    const response = await fetch(`/api/posts/upvotes/${postId}/${userId}`, {
+      method: 'PUT',
+    });
+    const upvotedPostData = await response.json();
+    console.log(upvotedPostData)
+  };
+
   useEffect(() => {
     getPosts();
   }, []);
 
-  async function handlePostUpvote(event, postId) {
-    event.preventDefault();
-    const response = await fetch(`/api/posts/upvote/${postId}`, {
-      method: 'PUT',
-    });
-    const singlePost = await response.json();
-    console.log(singlePost)
-  };
+
 
   return (
     <div className="container-fluid" id="dashboard">

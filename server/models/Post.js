@@ -1,6 +1,7 @@
 const { Schema, model, Types } = require("mongoose");
 const userSchema = require("./User");
 const replySchema = require("./Reply");
+const upvoteSchema = require('./Upvote')
 
 const postSchema = new Schema({
   title: {
@@ -18,6 +19,8 @@ const postSchema = new Schema({
     trim: true,
   },
   replies: [replySchema],
+
+  upvotes: [upvoteSchema],
 
   userId: [
     {
