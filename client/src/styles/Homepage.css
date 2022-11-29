@@ -25,7 +25,7 @@ body{
 }
 
 #computer{
-    margin: 150px 100px 150px 0px;
+    padding: 75px 50px 150px 0px;
     color: #6EEB83;
 }
 
@@ -56,24 +56,23 @@ body{
         margin: 20px;
         color: #6EEB83;
         text-align: center;
+        padding: 0px;
     }
     #jumbotron1{
         display: none;
     }
-
+    #jumbotron2{
+        display: block;
+        margin: auto;
+    }
     #mobile h1{
         display: block;
         color: #6EEB83;
         text-align: center;
         margin: 15px;
     }
-
     #computer h1{
         display: none;
     }
     
-    #jumbotron2{
-        display: block;
-        margin: auto;
-    }
 }
