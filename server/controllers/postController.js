@@ -98,6 +98,41 @@ async function upvotePost(req, res) {
   }
 }
 
+async function downvotePost(req, res) {
+    try {
+      const upvoteCheck = await Post.findOne({_id: req.params.postId, "upvotes.userId": req.params.userId});
+      if (!upvoteCheck) {
+          res.status(200).json({ message: "You have not upvoted this post!"});
+          return;
+      }
+      const downvotedPost = await Post.findOneAndUpdate(
+        { _id: req.params.postId },
+        { $pull: { upvotes: { userId: req.params.userId } } },
+        { new: true }
+      )
+      res.status(200).json(downvotedPost)
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    };
+};
+
+async function isUpvoted(req, res) {
+  try {
+    const upvoteCheck = await Post.findOne({_id: req.params.postId, "upvotes.userId": req.params.userId});
+    if (upvoteCheck) {
+      console.log("not null")
+        res.status(200).json(upvoteCheck);
+        return;
+    }
+    res.status(400).json(upvoteCheck);
+    return;
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  };
+};
+
 module.exports = {
   getAllPosts,
   getPostById,
@@ -105,4 +140,6 @@ module.exports = {
   updatePost,
   deletePost,
   upvotePost,
+  isUpvoted,
+  downvotePost,
 };

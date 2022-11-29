@@ -9,7 +9,8 @@ import Auth from "../../utils/auth";
 
 export default function Dashboard() {
   const [allPosts, setAllPosts] = useState([]);
-  let upvoteCount;
+  const userProfile = Auth.getProfile();
+  const userId = userProfile.data._id
 
   async function getPosts() {
     const response = await fetch("/api/posts");
@@ -19,14 +20,31 @@ export default function Dashboard() {
   };
 
   async function handlePostUpvote(postId) {
-    const userProfile = Auth.getProfile();
-    const userId = userProfile.data._id
+
     const response = await fetch(`/api/posts/upvotes/${postId}/${userId}`, {
       method: 'PUT',
     });
     const upvotedPostData = await response.json();
     console.log(upvotedPostData)
   };
+
+  async function handlePostDownvote(postId) {
+
+    const response = await fetch(`/api/posts/upvotes/${postId}/${userId}`, {
+      method: 'DELETE',
+    });
+    const upvotedPostData = await response.json();
+    console.log(upvotedPostData)
+  };
+
+  async function isUpvoted(postId) {
+    const response = await fetch(`/api/posts/upvotes/${postId}/${userId}`, {
+      method: 'GET'
+    })
+    console.log(response)
+    if (response.status === 200) return true;
+    return false;
+  }
 
   useEffect(() => {
     getPosts();
@@ -37,7 +55,7 @@ export default function Dashboard() {
   return (
     <div className="container-fluid" id="dashboard">
       <h1>Dashboard</h1>
-      <SinglePost allPosts={allPosts} handlePostUpvote={handlePostUpvote} upvoteCount={upvoteCount} />
+      <SinglePost allPosts={allPosts} handlePostUpvote={handlePostUpvote} handlePostDownvote={handlePostDownvote} isUpvoted={isUpvoted} />
     </div>
   );
 }
