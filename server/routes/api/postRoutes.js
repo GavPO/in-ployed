@@ -12,9 +12,9 @@ const {
 router.route('/').get(getAllPosts).post(createPost);
 
 // /api/Posts/:userId
-router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);;
+router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);
 
 // /api/Posts/PostId
-router.route('/upvotes/:postId').put(upvotePost)
+router.route('/upvotes/:postId/:userId').put(upvotePost);
 
 module.exports = router;
