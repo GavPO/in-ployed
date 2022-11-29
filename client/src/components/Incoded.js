@@ -5,14 +5,14 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
-import Post from "./pages/Post"
+import Post from "./pages/Post";
 
 export default function Incoded() {
   const [currentPage, setCurrentPage] = useState("Homepage");
 
   const renderPage = () => {
     if (currentPage === "Homepage") {
-      return <Homepage />;
+      return <Homepage handlePageChange={handlePageChange} />;
     }
     if (currentPage === "Login") {
       return <Login />;
@@ -23,7 +23,7 @@ export default function Incoded() {
     if (currentPage === "Profile") {
       return <Profile />;
     }
-    if (currentPage === 'Post') {
+    if (currentPage === "Post") {
       return <Post />;
     }
   };

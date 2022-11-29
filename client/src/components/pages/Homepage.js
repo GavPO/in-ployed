@@ -2,6 +2,7 @@ import React from "react";
 import "../../styles/Homepage.css";
 import jumbotron1 from "../../assets/jumbotron1.png";
 import jumbotron2 from "../../assets/jumbotron2.png";
+import { Nav, Navbar } from "react-bootstrap";
 
 import Auth from "../../utils/auth";
 
@@ -28,9 +29,17 @@ export default function Homepage({ currentPage, handlePageChange }) {
               <></>
             ) : (
               <>
-                <button type="button" className="btn">
-                  Get Started
-                </button>
+                <Nav.Item>
+                  <Nav.Link>
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={() => handlePageChange("Login")}
+                    >
+                      Get Started
+                    </button>
+                  </Nav.Link>
+                </Nav.Item>
               </>
             )}
           </div>
