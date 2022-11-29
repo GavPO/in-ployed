@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Post from "./pages/Post";
-import UpdateProfile from "./pages/UpdateProfile"
+import UpdateProfile from "./pages/UpdateProfile";
 
 export default function Incoded() {
   const [currentPage, setCurrentPage] = useState("Homepage");
@@ -27,13 +27,13 @@ export default function Incoded() {
     if (currentPage === "Post") {
       return <Post />;
     }
-    if (currentPage === 'UpdateProfile') {
+    if (currentPage === "UpdateProfile") {
       return <UpdateProfile />;
     }
   };
 
   useEffect(() => {
-    document.title = "IN-Coded";
+    document.title = "In-Coded";
   }, []);
 
   const handlePageChange = (page) => setCurrentPage(page);
