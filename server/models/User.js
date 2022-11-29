@@ -16,13 +16,11 @@ const userSchema = new Schema({
   },
   github: {
     type: String,
-    required: true,
     minlength: 1,
     maxlength: 30,
   },
   linkdin: {
     type: String,
-    required: true,
     minlength: 1,
     maxlength: 30,
   },
@@ -52,9 +50,10 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.isCorrectPassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+  console.log(this);
+  return await bcrypt.compare(password, this.password);
 };
 
-const User = model("user", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

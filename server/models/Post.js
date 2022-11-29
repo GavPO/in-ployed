@@ -3,10 +3,6 @@ const userSchema = require("./User");
 const replySchema = require("./Reply");
 
 const postSchema = new Schema({
-  postId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
-  },
   title: {
     type: String,
     required: true,
@@ -23,7 +19,7 @@ const postSchema = new Schema({
   },
   replies: [replySchema],
 
-  userid: [
+  userId: [
     {
       type: Schema.Types.ObjectId,
       ref: "User",

@@ -25,7 +25,7 @@ async function createPost(req, res) {
     try {
         const newPost = await Post.create(req.body)
         const associatedUser = await User.findOneAndUpdate(
-            { where: { _id: req.body.userId } },
+            {  _id: req.body.userId },
             { $addToSet: { posts: newPost._id }},
             { new: true },
         ).select('-__v')
@@ -54,7 +54,7 @@ async function updatePost(req, res) {
 async function deletePost(req, res) {
     try {
         await Post.findOneAndDelete({ _id: req.params.postId });
-        const associatedUser = await User.findOneAndRemove(
+        const associatedUser = await User.findOneAndUpdate(
             { posts: req.params.postId },
             { $pull: { posts: req.params.postId }},
             { new: true },
@@ -67,10 +67,25 @@ async function deletePost(req, res) {
     };
 };
 
+async function upvotePost(req, res) {
+    try {
+        const upvotedPost = await Post.findOneAndUpdate(
+            { _id: req.params.postId},
+            { $inc: { upvotes: 1 }},
+            { new: true }
+            ).select('-__v');
+            res.status(200).json(upvotedPost)
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err)
+    };
+};
+
 module.exports = {
     getAllPosts,
     getPostById,
     createPost,
     updatePost,
-    deletePost
+    deletePost,
+    upvotePost
 }

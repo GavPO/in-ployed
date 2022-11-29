@@ -5,15 +5,16 @@ const {
     createPost,
     updatePost,
     deletePost,
+    upvotePost,
 } = require('../../controllers/postController');
 
 // /api/posts
 router.route('/').get(getAllPosts).post(createPost);
 
 // /api/Posts/:userId
-router.route('/:postId').get(getPostById);
+router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);;
 
 // /api/Posts/PostId
-router.route('/:postId').put(updatePost).delete(deletePost);
+router.route('/upvotes/:postId').put(upvotePost)
 
 module.exports = router;

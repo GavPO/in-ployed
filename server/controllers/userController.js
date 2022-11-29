@@ -1,10 +1,13 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
-const { signToken } = require('../util/auth');
+const { signToken } = require("../utils/auth");
 
 async function getAllUsers(req, res) {
   try {
-    const allUsers = await User.find().select("-__v").populate("posts");
+    const allUsers = await User.find()
+      .select("-__v")
+      .select("-password")
+      .populate("posts");
     res.status(200).json(allUsers);
   } catch (err) {
     console.error(err);
@@ -14,7 +17,10 @@ async function getAllUsers(req, res) {
 
 async function getUserById(req, res) {
   try {
-    const singleUser = await User.findById(req.params.userId);
+    const singleUser = await User.findById(req.params.userId)
+      .select("-__v")
+      .select("-password")
+      .populate("posts");
     res.status(200).json(singleUser);
   } catch (err) {
     console.error(err);
@@ -24,8 +30,14 @@ async function getUserById(req, res) {
 
 async function createUser(req, res) {
   try {
-    const newUser = await User.create(req.body);
-    res.status(200).json(newUser);
+    // const userCheck = await User.find({ username: req.body.username })
+    // if (userCheck) {
+    //   res.status(403).json({ message: "Username already taken, please try again" });
+    //   return;
+    // }
+    const user = await User.create(req.body);
+    const token = signToken(user);
+    res.json({ token, user });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -38,7 +50,9 @@ async function updateUser(req, res) {
       { _id: req.params.userId },
       { $set: req.body },
       { new: true }
-    ).select("-__v");
+    )
+      .select("-__v")
+      .select("-password");
     res.status(200).json(updatedUser);
   } catch (err) {
     console.error(err);
@@ -48,7 +62,9 @@ async function updateUser(req, res) {
 
 async function deleteUser(req, res) {
   try {
-    const deletedUser = await User.findOneAndRemove({ _id: req.params.userId });
+    const deletedUser = await User.findOneAndRemove({ _id: req.params.userId })
+      .select("-__v")
+      .select("-password");
     await Post.deleteMany({ _id: { $in: deletedUser.posts } });
     res.status(200).json(deletedUser);
   } catch (err) {
@@ -59,18 +75,18 @@ async function deleteUser(req, res) {
 
 async function loginUser(req, res) {
   try {
-    const currentUser = await User.findOne({
-      $where: { email: req.body.email },
-    });
+    const user = await User.findOne({
+      email: req.body.email,
+    }).select("-__v");
 
-    if (!currentUser) {
+    if (!user) {
       res
         .status(400)
         .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
-    const validPassword = User.isCorrectPassword(req.body.password);
+    const validPassword = user.isCorrectPassword(req.body.password);
     if (!validPassword) {
       res
         .status(400)
@@ -78,8 +94,8 @@ async function loginUser(req, res) {
       return;
     }
 
-    const token = signToken(currentUser);
-    return { token, currentUser };
+    const token = signToken(user);
+    res.json({ token, user });
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
