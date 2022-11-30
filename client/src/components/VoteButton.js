@@ -1,5 +1,35 @@
 import { useState, useEffect } from "react";
 import React from "react";
+import upvote from "../assets/upvote.png";
+import downvote from "../assets/downvote.png";
+
+const styles= {
+  upvote: {
+    border: "solid 2px #6EEB83",
+    backgroundColor: "#27272C",
+    height: "30px",
+    width: "30px",
+    backgroundSize: "contain",
+    backgroundRepeat: "no-repeat",
+    padding: "5px",
+    marginTop: "10px",
+    backgroundImage: upvote,
+    borderRadius: ".375rem"
+},
+
+downvote: {
+  border: "solid 2px #6EEB83",
+  backgroundColor: "#27272C",
+  height: "30px",
+  width: "30px",
+  backgroundSize: "contain",
+  backgroundRepeat: "no-repeat",
+  padding: "5px",
+  marginTop: "10px",
+  backgroundImage: downvote,
+  borderRadius: ".375rem"
+},
+}
 
 // import Auth from "../utils/auth";
 
@@ -45,9 +75,9 @@ export default function VoteButton({ postId, userId }) {
   }
   function returnButton() {
     if (isUpvotedState) {
-      return <button onClick={() => handlePostDownvote()}>DOWNVOTE</button>
+      return <button id="upvote" style={styles.upvote} onClick={() => handlePostDownvote()}></button>
     }
-    return <button onClick={() => handlePostUpvote()}>UPVOTE</button>
+    return <button id="downvote" style={styles.upvote} onClick={() => handlePostUpvote()}></button>
   }
 
   useEffect(() => {
