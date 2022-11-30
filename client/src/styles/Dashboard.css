@@ -20,15 +20,10 @@
     color: #fff;
 }
 
-.post button{
-    border: solid 2px #6EEB83;
-    background-color: #27272C;
-    height: 30px;
-    width: 30px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    padding: 5px;
-    margin-top: 10px;
+#upvote{
     background-image: url("../assets/upvote.png");
-    border-radius: .375rem;
+}
+
+#downvote{
+    background-image: url("../assets/downvote.png");
 }
