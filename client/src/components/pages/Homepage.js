@@ -22,7 +22,7 @@ export default function Homepage({ currentPage, handlePageChange }) {
           <div id="computer">
             <h2>Lets get connected with In-coded</h2>
             <p className="align-middle">
-             On In-coded you can share all things web dev with your fellow developers. Whether its your own code snippets, cool new technologies, or a resource you found helpful. Everyone needs a good friend, and<br/> In-Coded is always here for you! So ask yourself, are you in?
+             On In-coded you can share all things web dev with your fellow developers. Whether its your own code snippets, cool new technologies, or a resource you found helpful. Everyone needs a good friend, and In-Coded is always here for you! So ask yourself, are you in?
             </p>
             {/* Depending on if the user is logged in or not different navtabs will display */}
             {Auth.loggedIn() ? (
