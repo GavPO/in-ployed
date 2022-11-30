@@ -2,6 +2,7 @@ const { Schema, model, Types } = require("mongoose");
 const userSchema = require("./User");
 const replySchema = require("./Reply");
 const upvoteSchema = require('./Upvote')
+const downvoteSchema = require('./Downvote')
 
 const postSchema = new Schema({
   title: {
@@ -21,6 +22,8 @@ const postSchema = new Schema({
 
   upvotes: [upvoteSchema],
 
+  downvotes: [downvoteSchema],
+
   userId: [
     {
       type: Schema.Types.ObjectId,
@@ -35,6 +38,10 @@ const postSchema = new Schema({
 
 postSchema.virtual("upvoteCount").get(function () {
   return this.upvotes.length;
+});
+
+postSchema.virtual("downvoteCount").get(function () {
+  return this.downvotes.length;
 });
 
 const Post = model("Post", postSchema);

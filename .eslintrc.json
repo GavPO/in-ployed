@@ -1,0 +1,15 @@
+{
+    "root": true,
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "node": true,
+      "es6": true,
+      "es2017": true
+    },
+    "rules": {
+        "allowShortCircuit": true
+    },
+    "extends": ["prettier"]
+  }
+  

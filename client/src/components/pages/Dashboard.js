@@ -19,33 +19,6 @@ export default function Dashboard() {
     setAllPosts(allPosts.allPosts);
   };
 
-  async function handlePostUpvote(postId) {
-
-    const response = await fetch(`/api/posts/upvotes/${postId}/${userId}`, {
-      method: 'PUT',
-    });
-    const upvotedPostData = await response.json();
-    console.log(upvotedPostData)
-  };
-
-  async function handlePostDownvote(postId) {
-
-    const response = await fetch(`/api/posts/upvotes/${postId}/${userId}`, {
-      method: 'DELETE',
-    });
-    const upvotedPostData = await response.json();
-    console.log(upvotedPostData)
-  };
-
-  async function isUpvoted(postId) {
-    const response = await fetch(`/api/posts/upvotes/${postId}/${userId}`, {
-      method: 'GET'
-    })
-    console.log(response)
-    if (response.status === 200) return true;
-    return false;
-  }
-
   useEffect(() => {
     getPosts();
   }, []);
@@ -55,7 +28,7 @@ export default function Dashboard() {
   return (
     <div className="container-fluid" id="dashboard">
       <h1>Dashboard</h1>
-      <SinglePost allPosts={allPosts} handlePostUpvote={handlePostUpvote} handlePostDownvote={handlePostDownvote} isUpvoted={isUpvoted} />
+      <SinglePost allPosts={allPosts} userId={userId}/>
     </div>
   );
 }
