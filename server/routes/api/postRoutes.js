@@ -6,6 +6,8 @@ const {
     updatePost,
     deletePost,
     upvotePost,
+    isUpvoted,
+    downvotePost,
 } = require('../../controllers/postController');
 
 // /api/posts/
@@ -15,6 +17,6 @@ router.route('/').get(getAllPosts).post(createPost);
 router.route('/:postId').get(getPostById).put(updatePost).delete(deletePost);
 
 // /api/Posts/upvotes
-router.route('/upvotes/:postId/:userId').put(upvotePost);
+router.route('/upvotes/:postId/:userId').put(upvotePost).get(isUpvoted).delete(downvotePost);
 
 module.exports = router;
