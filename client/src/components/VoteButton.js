@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import upvote from "../assets/upvote.png";
-import downvote from "../assets/downvote.png";
 
 const styles= {
   upvote: {
@@ -13,7 +11,6 @@ const styles= {
     backgroundRepeat: "no-repeat",
     padding: "5px",
     marginTop: "10px",
-    backgroundImage: upvote,
     borderRadius: ".375rem"
 },
 
@@ -26,7 +23,6 @@ downvote: {
   backgroundRepeat: "no-repeat",
   padding: "5px",
   marginTop: "10px",
-  backgroundImage: downvote,
   borderRadius: ".375rem"
 },
 }

@@ -34,7 +34,7 @@ body{
     font-size: large;
 }
 
-#mobile h1{
+#mobile{
     display: none;
 }
 
@@ -65,13 +65,13 @@ body{
         display: block;
         margin: auto;
     }
-    #mobile h1{
+    #mobile{
         display: block;
         color: #6EEB83;
         text-align: center;
         margin: 15px;
     }
-    #computer h1{
+    #computer h2{
         display: none;
     }
     

@@ -14,7 +14,7 @@ export default function Homepage({ currentPage, handlePageChange }) {
         <div className="col-lg-6">
           <img className="img-fluid" id="jumbotron1" src={jumbotron1} />
           <div id="mobile">
-            <h1>Looking to share some code?</h1>
+            <h1>Lets get connected with In-coded</h1>
             <img className="img-fluid" id="jumbotron2" src={jumbotron2} />
           </div>
         </div>
